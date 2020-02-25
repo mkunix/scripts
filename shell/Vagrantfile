@@ -1,0 +1,59 @@
+Vagrant.configure(2) do |config|
+  config.vm.box = "centos/7"
+  config.vm.define "puppetmaster"
+  config.vm.hostname = "puppetmaster"
+  config.vm.synced_folder '.', '/Users/mkanthasamy/', disabled: true
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)', type: 'dhcp'
+  config.vm.provider "virtualbox" do |vb|
+#    vb.gui = true
+    vb.memory = "1024"
+    vb.cpus = "2"
+    vb.name = "puppetmaster"
+  end
+end
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "centos/7"
+  config.vm.define "web01x-ops-23"
+  config.vm.hostname = "web01x-ops-23"
+  config.vm.synced_folder '.', '/Users/mkanthasamy/', disabled: true
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)', type: 'dhcp'
+  config.vm.provider "virtualbox" do |vb|
+#    vb.gui = true
+    vb.memory = "1024"
+    vb.cpus = "2"
+    vb.name = "web01x-ops-23"
+  end
+end
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "centos/7"
+  config.vm.define "app01x-ops-23"
+  config.vm.hostname = "app01x-ops-23"
+  config.vm.synced_folder '.', '/Users/mkanthasamy/', disabled: true
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)', type: 'dhcp'
+  config.vm.provider "virtualbox" do |vb|
+#    vb.gui = true
+    vb.memory = "1024"
+    vb.cpus = "2"
+    vb.name = "app01x-ops-23"
+  end
+end
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "centos/8"
+  config.vm.define "centos8-1"
+  config.vm.hostname = "centos8-1"
+  config.vm.synced_folder '.', '/Users/mkanthasamy/', disabled: true
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+  config.vm.network :public_network, bridge: 'en0: Wi-Fi (AirPort)', type: 'dhcp'
+  config.vm.provider "virtualbox" do |vb|
+#    vb.gui = true
+    vb.memory = "1024"
+    vb.cpus = "2"
+    vb.name = "centos8-1"
+  end
+end
