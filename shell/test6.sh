@@ -1,14 +1,23 @@
 #!/bin/bash
-#trying to access script parameters inside a function
+#Demo the bad use of the varialbles
 
-function badfunction1() {
-  echo $[ $1 * $2 ]
+func1() {
+  temp=$[ $value + 5 ]
+  result=$[ $temp * 2 ]
 }
 
-if [ $# -eq 2 ]
+temp4=
+value=6
+
+func1
+
+#6 + 5
+#11*2
+
+echo "The result is $result"
+if [ "$temp -gt $value" ]
 then
-  value=$(badfunction1 $1 $2)
-  echo "The value is ${value}"
+    echo "temp is larger"
 else
-  echo "Usage: test6.sh a b"
+    echo "temp is smaller"
 fi
