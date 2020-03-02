@@ -1,24 +1,57 @@
 #!/bin/bash
 #Fix the chef client configuration
 
-#functon to check for FQDN
-#set -x
+#Print the syntax
+USAGE() {
+     echo
+     echo "Usage: `basename $0` -h hostname.portal.webmd.com [-f PATH] "
+     exit 1
+}
+
+CHECK_ARG() {
+
+  if [ $# -eq 0 ]
+  then
+    echo "Not enough arugments"
+    USAGE
+    exit 1
+  fi
+}
+
+
+NODE_NAME=$1
+FILE_NAME=$2
+
 FQDN_CHECK() {
-#echo "Just print the whatever server name:  "${1}""
 domain='portal.webmd.com'
-if [[ $1 == *"$domain" ]]
+if [[ $NODE_NAME == *"$domain" ]]
 then
    echo "The hostnames contain ${domain} "
 else
-   echo
-   echo 'The hostname has no portal.webmd.com'
-   echo "Usage: $0 hostname.portal.webmd.com"
+   USAGE
 fi
-
 }
 
 DELETE_CLIENT() {
-echo 
 
+for arg in "$@"
+
+do
+
+		case ${arg} in
+				$NODE_NAME)
+						echo " Code for hostname deletion from \$1 value"
+            ;;
+				$FILE_NAME)
+						echo " Code for hostnames in file, from \$2 value"
+            ;;
+				*)
+						echo "Print the syntax"
+            ;;
+		esac
+done
 }
-FQDN_CHECK $1
+
+#CHECK_ARG
+FQDN_CHECK
+#DELETE_CLIENT $1 $2
