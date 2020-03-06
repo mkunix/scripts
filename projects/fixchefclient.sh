@@ -1,5 +1,8 @@
 #!/bin/bash
 #Fix the chef client configuration
+set -o
+set -e
+set -pipefail
 
 #Print the syntax
 USAGE() {
@@ -34,12 +37,10 @@ fi
 
 DELETE_CLIENT() {
 
-for arg in "$@"
-
-do
+  while getops 'nf:' OPTION; do
 
 		case ${arg} in
-				$NODE_NAME)
+				n)
 						echo " Code for hostname deletion from \$1 value"
             ;;
 				$FILE_NAME)
